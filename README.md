@@ -107,7 +107,38 @@ $ vim /usr/sofa/config/sofa_config.xml
     </property>
 </configuration>
 ```
-
+* Check how many ssds there are in your system.
+```
+$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 931.5G  0 disk 
+|-sda1   8:1    0   500M  0 part /boot
+|-sda2   8:2    0  31.4G  0 part [SWAP]
+|-sda3   8:3    0    50G  0 part /
+|-sda4   8:4    0     1K  0 part 
+`-sda5   8:5    0 849.6G  0 part /home
+sdb      8:16   0 447.1G  0 disk 
+sdc      8:32   0 447.1G  0 disk 
+sdd      8:48   0 447.1G  0 disk 
+sde      8:64   0 447.1G  0 disk 
+sdf      8:80   0 447.1G  0 disk 
+sdg      8:96   0 447.1G  0 disk 
+sdh      8:112  0 447.1G  0 disk 
+sdi      8:128  0 447.1G  0 disk 
+sdj      8:144  0 447.1G  0 disk 
+sdk      8:160  0 447.1G  0 disk 
+sdl      8:176  0 447.1G  0 disk 
+sdm      8:192  0 447.1G  0 disk 
+sdn      8:208  0 447.1G  0 disk 
+sdo      8:224  0 447.1G  0 disk 
+sdp      8:240  0 447.1G  0 disk 
+sdq     65:0    0 447.1G  0 disk 
+sdr     65:16   0 447.1G  0 disk 
+sds     65:32   0 447.1G  0 disk 
+sdt     65:48   0 447.1G  0 disk 
+sdu     65:64   0 447.1G  0 disk
+```
+There are 20 available ssds from sdb to sdu  in my system.
 
 
 ## Run And Stop SOFA
