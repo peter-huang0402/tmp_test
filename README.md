@@ -15,8 +15,7 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 # Sofa Install Guide
 ## The environment prepare
 ---
-### OS installation
-- Install Centos 7.0 ~ 7.4
+- Install OS. centos 7.0 ~ 7.4
 - Install necessary packages for compiling sofa sources 
 ```
 $ yum -y install gcc
@@ -57,7 +56,7 @@ Generate sofa packages success
 ```
 * Deploy SOFA
 ```
-$ cd /packages
+$ cd packages
 $ sh ./undeploy_sofa.sh
 $ sh ./deploy_sofa.sh 
 ./deploy_sofa.sh: deply SOFA version=0.1 release=4
@@ -70,7 +69,7 @@ SOFA_Release/rfsioctl
 SOFA_Release/noop2.ko
 ./deploy_sofa.sh: deploy SOFA done
 ```
-* check SOFA folder
+* Check SOFA folder
 ```
 $  ls -l /usr/sofa
 drwxr-xr-x 4 root root      209 Feb  5 15:59 bin
@@ -81,6 +80,39 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 -rwxr-xr-x 1 root root    13160 Feb  5 15:59 rfsioctl
 -rwxr-xr-x 1 root root  4860512 Feb  5 15:59 sofa.ko
 -rwxr-xr-x 1 root root    62832 Feb  5 15:59 sofa_daemon
+```
+## Configure sofa_config.xml
+---
+* Configure /usr/sofa/config/sofa_config.xml
+```
+$ vim /usr/sofa/config/sofa_config.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>lfsm_reinstall</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>lfsm_cn_ssds</name>
+        <value>2</value>
+        <setting>b-c</setting>
+    </property>
+    <property>
+        <name>cn_ssds_per_hpeu</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>lfsm_cn_pgroup</name>
+        <value>2</value>
+    </property>
+.......................................
+.......................................
+    <property>
+        <name>lfsm_gc_on_lower_ratio</name>
+        <value>125</value>
+    </property>
+</configuration>
 ```
 
 *A recommended topology below:*
