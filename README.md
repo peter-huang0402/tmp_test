@@ -34,13 +34,54 @@ $ yum –y install json-devel
 $ yum -y install rpm-build
 $ yum -y install libaio
 $ yum -y install libaio-devel
-kernel-package libncurses5 libncurses5-dev zlib1g-dev \
-libglib2.0-dev qemu xorg bridge-utils openvpn vncviewer \
-libssl-dev libpixman-1-dev nfs-common git
 ```
 
-### All Node Install
-* Assume you have already builded Primary, Backup and NFS node.
+## Build SOFA
+---
+* Clone SOFA on your folder from Github
+```
+$ cd /home/$(whoami)
+$ git clone https://github.com/sofa/sofa.git
+```
+* Compile SOFA and build SOFA-0.1-4.x86_64.rpm
+```
+$ cd /home/$(whoami)/sofa
+$ sh ./gen_sofa_package.sh
+./gen_sofa_package.sh platform=linux verion=0.1 release=4 tmp_dir=/home/sofa/SOFA_Release/
+./gen_sofa_package.sh start to generate sofa release packages
+.......................................
+.......................................
++ exit 0
+RPM Preparation Done!
+Generate sofa packages success
+```
+* Deploy SOFA
+```
+$ cd /packages
+$ sh ./undeploy_sofa.sh
+$ sh ./deploy_sofa.sh 
+./deploy_sofa.sh: deply SOFA version=0.1 release=4
+Preparing...                          ################################# [100%]
+Updating / installing...
+.......................................
+.......................................
+SOFA_Release/lfsmdr.ko
+SOFA_Release/rfsioctl
+SOFA_Release/noop2.ko
+./deploy_sofa.sh: deploy SOFA done
+```
+* check SOFA folder
+```
+$  ls -l /usr/sofa
+drwxr-xr-x 4 root root      209 Feb  5 15:59 bin
+drwxr-xr-x 2 root root       29 Feb  5 15:59 config
+-rwxr-xr-x 1 root root 13455600 Feb  5 15:59 lfsmdr.ko
+drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
+-rwxr-xr-x 1 root root   261936 Feb  5 16:00 noop2.ko
+-rwxr-xr-x 1 root root    13160 Feb  5 15:59 rfsioctl
+-rwxr-xr-x 1 root root  4860512 Feb  5 15:59 sofa.ko
+-rwxr-xr-x 1 root root    62832 Feb  5 15:59 sofa_daemon
+```
 
 *A recommended topology below:*
 ![](https://i.imgur.com/DuKZweZ.png)
