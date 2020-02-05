@@ -1,4 +1,4 @@
-# Sofa
+# SOFA
 
 ================================================================
 
@@ -12,9 +12,28 @@ Cuju shows that these optimizations have greatly saved the processor usage, sync
 
 For more information see: https://cuju-ft.github.io/cuju-web/home.html
 
-# Cuju Install Guide
+# Sofa Install Guide
 ## The environment prepare
 ---
+### OS installation
+-Install Centos 7.0 ~ 7.4
+-Install necessary packages for compiling sofa sources 
+```
+ $ yum -y install gcc
+ $ yum -y install gcc-c++
+```
+
+```
+yum -y install json-c-devel 
+yum –y install json-devel 
+yum -y install rpm-build
+yum -y install libaio
+yum -y install libaio-devel
+kernel-package libncurses5 libncurses5-dev zlib1g-dev \
+libglib2.0-dev qemu xorg bridge-utils openvpn vncviewer \
+libssl-dev libpixman-1-dev nfs-common git
+```
+
 ### All Node Install
 * Assume you have already builded Primary, Backup and NFS node.
 
