@@ -24,8 +24,8 @@ $ yum -y install gcc-c++
 $ uname -r
 3.10.0-327.10.1.el7.tb.x86_64
 ```
-Google and download kernel-devel-$(uname -r).rpm
-Notice. Install kernel-devel-XXX.rpm. XXX must exactly match your kernel version.
+Google and download kernel-devel-$(uname -r).rpm \
+Notice. Install kernel-devel-XXX.rpm. XXX must exactly match your kernel version. \
 In this case the necessary rpm is 3.10.0-327.10.1.el7.tb.x86_64.rpm. 
 ```
 $ rpm -ivh kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm
