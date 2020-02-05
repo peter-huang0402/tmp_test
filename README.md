@@ -16,8 +16,8 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 ## The environment prepare
 ---
 ### OS installation
--Install Centos 7.0 ~ 7.4
--Install necessary packages for compiling sofa sources 
+- Install Centos 7.0 ~ 7.4
+- Install necessary packages for compiling sofa sources 
 ```
  $ yum -y install gcc
  $ yum -y install gcc-c++
