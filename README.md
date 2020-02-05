@@ -81,6 +81,7 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 -rwxr-xr-x 1 root root  4860512 Feb  5 15:59 sofa.ko
 -rwxr-xr-x 1 root root    62832 Feb  5 15:59 sofa_daemon
 ```
+
 ## Configure sofa_config.xml
 ---
 * Configure /usr/sofa/config/sofa_config.xml
@@ -114,6 +115,8 @@ $ vim /usr/sofa/config/sofa_config.xml
     </property>
 </configuration>
 ```
+
+
 
 *A recommended topology below:*
 ![](https://i.imgur.com/DuKZweZ.png)
