@@ -13,7 +13,7 @@ Cuju shows that these optimizations have greatly saved the processor usage, sync
 For more information see: https://cuju-ft.github.io/cuju-web/home.html
 
 # Sofa Install Guide
-## The environment prepare
+## The Environment Prepare
 ---
 - Install OS. centos 7.0 ~ 7.4
 - Install necessary packages for compiling sofa sources 
@@ -99,14 +99,6 @@ $ vim /usr/sofa/config/sofa_config.xml
         <value>2</value>
         <setting>b-c</setting>
     </property>
-    <property>
-        <name>cn_ssds_per_hpeu</name>
-        <value>1</value>
-    </property>
-    <property>
-        <name>lfsm_cn_pgroup</name>
-        <value>2</value>
-    </property>
 .......................................
 .......................................
     <property>
@@ -116,6 +108,22 @@ $ vim /usr/sofa/config/sofa_config.xml
 </configuration>
 ```
 
+
+
+## Run And Stop SOFA
+---
+* Run SOFA and generated /dev/lfsm block device
+```
+$ sh /usr/sofa/bin/start-sofa.sh
+$ lsblk
+.......................................
+sdw     65:96   0 447.1G  0 disk 
+lfsm   252:0    0   1.3T  0 disk
+```
+* Stop SOFA
+```
+$ sh /usr/sofa/bin/stop-sofa.sh
+```
 
 
 *A recommended topology below:*
