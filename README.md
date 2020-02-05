@@ -19,16 +19,21 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 - Install Centos 7.0 ~ 7.4
 - Install necessary packages for compiling sofa sources 
 ```
- $ yum -y install gcc
- $ yum -y install gcc-c++
+$ yum -y install gcc
+$ yum -y install gcc-c++
+$ uname -r
+3.10.0-327.10.1.el7.tb.x86_64
 ```
-
+Google and download kernel-devel-$(uname -r).rpm
+Notice. Install kernel-devel-XXX.rpm. XXX must exactly match your kernel version.
+In this case the necessary rpm is 3.10.0-327.10.1.el7.tb.x86_64.rpm. 
 ```
-yum -y install json-c-devel 
-yum –y install json-devel 
-yum -y install rpm-build
-yum -y install libaio
-yum -y install libaio-devel
+$ rpm -ivh kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm
+$ yum -y install json-c-devel 
+$ yum –y install json-devel 
+$ yum -y install rpm-build
+$ yum -y install libaio
+$ yum -y install libaio-devel
 kernel-package libncurses5 libncurses5-dev zlib1g-dev \
 libglib2.0-dev qemu xorg bridge-utils openvpn vncviewer \
 libssl-dev libpixman-1-dev nfs-common git
