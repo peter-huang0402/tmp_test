@@ -84,8 +84,8 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 
 ## Configure sofa_config.xml
 ---
-* Configure /usr/sofa/config/sofa_config.xml\
-At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml.\
+* Configure /usr/sofa/config/sofa_config.xml \
+At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml. \
 
 ```
 $ vim /usr/sofa/config/sofa_config.xml
