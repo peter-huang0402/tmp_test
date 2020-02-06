@@ -14,10 +14,11 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 
 # Hardware Support
 ---
-CPU: Intel cpu with at least 10 virtual cpus and each 2.8GHz \
+CPU: Intel CPU with at least 10 virtual cpus and each 2.8GHz \
 RAM: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
-HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 
+HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
+SSDS: They must support the trim command including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
 # Sofa Install Guide
