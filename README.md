@@ -16,10 +16,8 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 ---
 CPU: Intel cpu with at least 10 virtual cpus and each 2.8GHz \
 RAM: 64G \
-Motherboard: Supermicro X10DRU-i+ with version 1.02A \
-HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
-
-
+Motherboard: Supermicro X10DRU-i+ version 1.02A \
+HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 
 
 
 # Sofa Install Guide
