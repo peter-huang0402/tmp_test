@@ -18,7 +18,7 @@ CPU: Intel CPU with at least 10 virtual cpus and each 2.8GHz \
 RAM: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
-SSDS: They must `support the trim` command including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
+SSDS: They must `support the trim command` including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
 # Sofa Install Guide
@@ -34,7 +34,7 @@ $ uname -r
 ```
 Google and download kernel-devel-$(uname -r).rpm \
 Notice. Install kernel-devel-$(uname -r).rpm. $(uname -r) must exactly match your kernel version. \
-So, my kernel development package is kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm. 
+In my machine my kernel development package is kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm. 
 ```
 $ rpm -ivh kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm
 $ yum -y install json-c-devel 
@@ -257,11 +257,21 @@ In my system there are 20 available ssds from sdb to sdu except sda used for ope
 * Run SOFA and generated /dev/lfsm block device
 ```
 $ sh /usr/sofa/bin/start-sofa.sh
+```
+* Check if SOFA services are available 
+    - check if /dev/lfsm exists
+    - check kernel log with specific message
+```
 $ lsblk
 .......................................
 sdw     65:96   0 447.1G  0 disk 
 lfsm   252:0    0   1.3T  0 disk
+$  dmesg | grep "main INFO initial all sofa components done"
+[239305.799428] [SOFA] main INFO initial all sofa components done
 ```
+
+
+
 * Stop SOFA
 ```
 $ sh /usr/sofa/bin/stop-sofa.sh
