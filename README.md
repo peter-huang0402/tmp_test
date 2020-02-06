@@ -109,7 +109,7 @@ $ vim /usr/sofa/config/sofa_config.xml
     </property>
 </configuration>
 ```
-- Settings definition in sofa_config.xml
+- Major settings definition in sofa_config.xml
     - lfsm_reinstall   : When starting SOFA, if sofa keeps original data or clears data out. \
           - value      : 0: keep original data, 1: clear out all data.
     - lfsm_cn_ssds     : Assign which ssds to SOFA  \
@@ -120,7 +120,7 @@ $ vim /usr/sofa/config/sofa_config.xml
     - lfsm_cn_pgroup   :   \
           - value      : SOFA uses how many protection group.
     - lfsm_io_thread   :   \ 
-          - value   
+          - value      ：
           - settings   : 
     - lfsm_bh_thread   :   \
           - value      : 
@@ -182,6 +182,65 @@ sdt     65:48   0 447.1G  0 disk
 sdu     65:64   0 447.1G  0 disk
 ```
 In my system there are 20 available ssds from sdb to sdu except sda used for operation system.
+
+```
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>lfsm_reinstall</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>lfsm_cn_ssds</name>
+        <value>4</value>
+        <setting>b,c,d,e</setting>
+    </property>
+    <property>
+        <name>cn_ssds_per_hpeu</name>
+        <value>2</value>
+    </property>
+    <property>
+        <name>lfsm_cn_pgroup</name>
+        <value>2</value>
+    </property>
+    <property>
+        <name>lfsm_only</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>lfsm_raid6</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>lfsm_io_thread</name>
+        <value>10</value>
+        <setting> 11,12,13,14,15,16,17,18,19,30 </setting>
+    </property>
+    <property>
+        <name>lfsm_bh_thread</name>
+        <value>5</value>
+        <setting> 31,32,33,34,35 </setting>
+    </property>
+.......................................
+.......................................
+    <property>
+        <name>hba_intr_name</name>
+        <value>mpt3sas0</value>
+        <setting>19,20</setting>
+    </property>
+    <property>
+        <name>hba_intr_name</name>
+        <value>mpt3sas1</value>
+        <setting>21,22</setting>
+    </property>
+    <property>
+        <name>hba_intr_name</name>
+        <value>mpt3sas2</value>
+        <setting>23</setting>
+    </property>
+</configuration>
+```
 
 
 ## Run And Stop SOFA
