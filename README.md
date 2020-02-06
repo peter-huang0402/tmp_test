@@ -84,12 +84,12 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 
 ## Configure sofa_config.xml
 ---
-* Configure /usr/sofa/config/sofa_config.xml
+* Configure /usr/sofa/config/sofa_config.xml\
 At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml.\
 \
-Settings definition in sofa_config.xml\
-lfsm_reinstall: When starting SOFA, if sofa keep original data or clear data out.\
-                Value: 0 -- keep original data, 1 -- clear out all data.\
+- Settings definition in sofa_config.xml\
+    - lfsm_reinstall: when starting SOFA, if sofa keep original data or clear data out.\
+             - Value: 0-keep original data, 1-clear out all data.\
  
 lfsm_cn_ssds:
 
