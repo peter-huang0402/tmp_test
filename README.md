@@ -14,14 +14,10 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 
 # Hardware Support
 ---
-CPU: Intel cpu with at least 10 virtual cpus and each 2.8GHz
-RAM: 64G
-Motherboard: 
-    Manufacturer: Supermicro
-	Product Name: X10DRU-i+
-	Version: 1.02A
-	Serial Number: OM152S012659
-HBA card: Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3
+CPU: Intel cpu with at least 10 virtual cpus and each 2.8GHz \
+RAM: 64G \
+Motherboard: Supermicro X10DRU-i+ with version 1.02A \
+HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
 
 
 
