@@ -112,20 +112,20 @@ $ vim /usr/sofa/config/sofa_config.xml
 - Settings definition in sofa_config.xml
     - lfsm_reinstall   : When starting SOFA, if sofa keeps original data or clears data out. \
           - value      : 0: keep original data, 1: clear out all data.
-    - lfsm_cn_ssds     : Assign which ssds to SOFA
+    - lfsm_cn_ssds     : Assign which ssds to SOFA  \
           - value      : SOFA use how many ssds.
           - settings   : Assign which ssds to SOFA. 
-    - cn_ssds_per_hpeu : 
+    - cn_ssds_per_hpeu :   \
           - value      :           
-    - lfsm_cn_pgroup   : 
+    - lfsm_cn_pgroup   :   \
           - value      : SOFA uses how many protection group.
-    - lfsm_io_thread   : 
+    - lfsm_io_thread   :   \ 
           - value   
           - settings   : 
-    - lfsm_bh_thread   : 
+    - lfsm_bh_thread   :   \
           - value      : 
           - settings   :        
-    - hba_intr_name    : 
+    - hba_intr_name    :   \
           - value      :
           - settings:  :           
           
