@@ -85,6 +85,16 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 ## Configure sofa_config.xml
 ---
 * Configure /usr/sofa/config/sofa_config.xml
+At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml.\
+\
+Settings definition in sofa_config.xml\
+lfsm_reinstall: When starting SOFA, if sofa keep original data or clear data out.\
+                Value: 0 -- keep original data, 1 -- clear out all data.\
+ 
+lfsm_cn_ssds:
+
+
+
 ```
 $ vim /usr/sofa/config/sofa_config.xml
 <?xml version="1.0"?>
@@ -107,6 +117,9 @@ $ vim /usr/sofa/config/sofa_config.xml
     </property>
 </configuration>
 ```
+* Major settings in sofa_config.xml
+
+
 * Check how many ssds there are in your system.
 ```
 $ lsblk
@@ -138,7 +151,7 @@ sds     65:32   0 447.1G  0 disk
 sdt     65:48   0 447.1G  0 disk 
 sdu     65:64   0 447.1G  0 disk
 ```
-There are 20 available ssds from sdb to sdu  in my system.
+In my system there are 20 available ssds from sdb to sdu except sda used for operation system.
 
 
 ## Run And Stop SOFA
