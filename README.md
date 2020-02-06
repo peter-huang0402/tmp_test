@@ -12,6 +12,20 @@ Cuju shows that these optimizations have greatly saved the processor usage, sync
 
 For more information see: https://cuju-ft.github.io/cuju-web/home.html
 
+# Hardware Support
+---
+CPU: Intel cpu with at least 10 virtual cpus and each 2.8GHz
+RAM: 64G
+Motherboard: 
+    Manufacturer: Supermicro
+	Product Name: X10DRU-i+
+	Version: 1.02A
+	Serial Number: OM152S012659
+HBA card: Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3
+
+
+
+
 # Sofa Install Guide
 ## The Environment Prepare
 ---
@@ -257,6 +271,17 @@ lfsm   252:0    0   1.3T  0 disk
 ```
 $ sh /usr/sofa/bin/stop-sofa.sh
 ```
+
+## Uninstall SOFA
+---
+* After stopping SOFA, you can use following commands to remove SOFA in your system.
+```
+$ sh /home/$(whoami)/sofa/packages/undeploy_sofa.sh
+```
+
+
+
+
 
 
 *A recommended topology below:*
