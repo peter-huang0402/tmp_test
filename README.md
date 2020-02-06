@@ -85,7 +85,7 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 ## Configure sofa_config.xml
 ---
 * Configure /usr/sofa/config/sofa_config.xml \
-At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml. \
+At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml.
 
 ```
 $ vim /usr/sofa/config/sofa_config.xml
@@ -110,8 +110,39 @@ $ vim /usr/sofa/config/sofa_config.xml
 </configuration>
 ```
 - Settings definition in sofa_config.xml
-    - lfsm_reinstall: when starting SOFA, if sofa keep original data or clear data out.\
-             - Value: 0-keep original data, 1-clear out all data.\
+    - lfsm_reinstall   : When starting SOFA, if sofa keeps original data or clears data out. \
+          - value      : 0: keep original data, 1: clear out all data.
+    - lfsm_cn_ssds     : Assign which ssds to SOFA
+          - value      : SOFA use how many ssds.
+          - settings   : Assign which ssds to SOFA. 
+    - cn_ssds_per_hpeu : 
+          - value      :           
+    - lfsm_cn_pgroup   : 
+          - value      : SOFA uses how many protection group.
+    - lfsm_io_thread   : 
+          - value   
+          - settings   : 
+    - lfsm_bh_thread   : 
+          - value      : 
+          - settings   :        
+    - hba_intr_name    : 
+          - value      :
+          - settings:  :           
+          
+          
+       
+       
+       
+          
+          
+          
+     If we assign 4 ssds including sdb,sdc,sde,sdd to SOFA, the config should be set up by \
+```     
+<name>lfsm_cn_ssds</name>
+<value>4</value>
+<setting>b,c,d,e</setting>
+```
+
  
 lfsm_cn_ssds:
 
