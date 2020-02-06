@@ -14,8 +14,8 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 
 # Hardware Support
 ---
-CPU: Intel CPU with at least 10 virtual cpus and each 2.8GHz \
-RAM: 64G \
+CPU: Intel CPU with at least 10 virtual cpus and each with 2.8GHz
+Memory: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
 SSDS: They must `support the trim command` including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
@@ -94,7 +94,7 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 ## Configure sofa_config.xml
 ---
 * Configure /usr/sofa/config/sofa_config.xml \
-At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml.
+At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml directly.
 
 ```
 $ vim /usr/sofa/config/sofa_config.xml
@@ -266,7 +266,7 @@ $ lsblk
 .......................................
 sdw     65:96   0 447.1G  0 disk 
 lfsm   252:0    0   1.3T  0 disk
-$  dmesg | grep "main INFO initial all sofa components done"
+$ dmesg | grep "main INFO initial all sofa components done"
 [239305.799428] [SOFA] main INFO initial all sofa components done
 ```
 
