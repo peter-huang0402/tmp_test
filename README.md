@@ -18,7 +18,7 @@ CPU: Intel CPU with at least 10 virtual cpus and each 2.8GHz \
 RAM: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
-SSDS: They must support the trim command including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
+SSDS: They must `support the trim` command including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
 # Sofa Install Guide
@@ -33,8 +33,8 @@ $ uname -r
 3.10.0-327.10.1.el7.tb.x86_64
 ```
 Google and download kernel-devel-$(uname -r).rpm \
-Notice. Install kernel-devel-XXX.rpm. XXX must exactly match your kernel version. \
-In this case the necessary rpm is 3.10.0-327.10.1.el7.tb.x86_64.rpm. 
+Notice. Install kernel-devel-$(uname -r).rpm. $(uname -r) must exactly match your kernel version. \
+So, my kernel development package is kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm. 
 ```
 $ rpm -ivh kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm
 $ yum -y install json-c-devel 
