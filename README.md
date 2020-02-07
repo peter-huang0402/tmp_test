@@ -14,7 +14,7 @@ For more information see: https://cuju-ft.github.io/cuju-web/home.html
 
 # Hardware Support
 ---
-CPU: Intel CPU with at least 10 virtual cpus and each with 2.8GHz
+CPU: Intel CPU with at least 10 virtual cpus and with 2.8GHz each \
 Memory: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
@@ -146,7 +146,7 @@ $ vim /usr/sofa/config/sofa_config.xml
           - value      : Get the prefix of HBA's interrupt name in /proc/interrupt \
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
-     If we assign 4 ssds including sdb,sdc,sde,sdd to SOFA, the config should be set up by \
+     If we assign 4 ssds including sdb,sdc,sde,sdd to SOFA, the config should be set up by 
 ```     
 <name>lfsm_cn_ssds</name>
 <value>4</value>
