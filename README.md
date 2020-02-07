@@ -122,11 +122,11 @@ $ vim /usr/sofa/config/sofa_config.xml
 - Major settings definition in sofa_config.xml
     - lfsm_reinstall   : When a user starts SOFA, if SOFA keeps existing data or clears all data. \
           - value      : 0: keep existing data; 1: clear all data.\
-          \
+          
     - lfsm_cn_ssds     : Assign which SSDs to SOFA  \
           - value      : How many SSDs Sofa uses. \
           - settings   : Assign which SSDs to SOFA. \
-          ]
+          
     - cn_ssds_per_hpeu : Indicate how many SSDs there are in a protection group.  \                
                          For Raid5 protection mode:  3 <= cn_ssds_per_hpeu <= 16 \
                          \
