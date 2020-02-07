@@ -94,8 +94,8 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 
 ## Configure sofa_config.xml
 ---
-* Configure /usr/sofa/config/sofa_config.xml \
-At the first time, before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml directly.
+* SOFA settings in sofa_config.xml \
+At the first time before you start sofa, you must setup config file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your config files, you should update config file in /usr/`data`/sofa/config/sofa_config.xml directly.
 
 ```
 $ vim /usr/sofa/config/sofa_config.xml
@@ -146,18 +146,10 @@ $ vim /usr/sofa/config/sofa_config.xml
           - value      : Get the prefix of HBA's interrupt name in /proc/interrupt \
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
-     If we assign 4 ssds including sdb,sdc,sde,sdd to SOFA, the config should be set up by 
-```     
-<name>lfsm_cn_ssds</name>
-<value>4</value>
-<setting>b,c,d,e</setting>
-```
-
- 
-lfsm_cn_ssds:
-
-
-* Major settings in sofa_config.xml
+* Configure SOFA settings 
+Step1. In my machine I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs.
+Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread)
+Step3. Assign vocres to HBA's interrupt handler.
 
 
 * Check how many ssds there are in your system.
