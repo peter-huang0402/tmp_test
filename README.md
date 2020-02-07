@@ -123,18 +123,18 @@ $ vim /usr/sofa/config/sofa_config.xml
     - lfsm_reinstall   : When a user starts SOFA, if SOFA keeps existing data or clears all data. \
           - value      : 0: keep existing data; 1: clear all data.
           
-    - lfsm_cn_ssds     : Assign which SSDs to SOFA  \
+    - lfsm_cn_ssds     : Assign which SSDs to SOFA   \
           - value      : How many SSDs Sofa uses. \
           - settings   : Assign which SSDs to SOFA. 
           
-    - cn_ssds_per_hpeu : Indicate how many SSDs there are in a protection group.  \                
+    - cn_ssds_per_hpeu : Indicate how many SSDs there are in a protection group.  \
                          For Raid5 protection mode:  3 <= cn_ssds_per_hpeu <= 16 
                          
-    - lfsm_cn_pgroup   : Indicates How many protection group SOFA uses. \       
+    - lfsm_cn_pgroup   : Indicates How many protection group SOFA uses.  \
                          For Sofa, lfsm_cn_ssds >= cn_ssds_per_hpeu * lfsm_cn_prgroup. \
                          The number of spare disks = lfsm_cn_ssds - ( cn_ssds_per_hpeu * lfsm_cn_prgroup ) 
                          
-    - lfsm_io_thread   : Assign specific vcores to SOFA's IO threads \ 
+    - lfsm_io_thread   : Assign specific vcores to SOFA's IO threads \
           - value      ：How many vcores SOFA uses for IO thread. Default value: 7 or 8. \
           - settings   : Vcores ID. Please don't use the first vcore of physical CPU. 
                          
@@ -142,7 +142,7 @@ $ vim /usr/sofa/config/sofa_config.xml
           - value      : How many vcores SOFA uses for IO's bottom half threads. Default value: 3 or 4. \
           - settings   : Vcores ID. Please don't use the same vcore which lfsm_io_threads lists. 
                          
-    - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \ 
+    - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \
           - value      : get the prefix of HBA's interrupt name in /proc/interrupt \
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.      
                            
