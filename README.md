@@ -33,7 +33,7 @@ $ uname -r
 3.10.0-327.10.1.el7.tb.x86_64
 ```
 Google and download kernel-devel-$(uname -r).rpm \
-Notice. Install kernel-devel-$(uname -r).rpm. $(uname -r) must exactly match your kernel version. \
+[Notice] Install kernel-devel-$(uname -r).rpm. $(uname -r) must exactly match your kernel version. \
 In my machine my kernel development package is kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm. 
 ```
 $ rpm -ivh kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm
@@ -254,7 +254,7 @@ In my system there are 20 available ssds from sdb to sdu except sda used for ope
 
 ## Run And Stop SOFA
 ---
-* Run SOFA and generated /dev/lfsm block device
+* Run SOFA
 ```
 $ sh /usr/sofa/bin/start-sofa.sh
 ```
