@@ -18,6 +18,7 @@ CPU: Intel CPU with at least 10 virtual cpus and each with 2.8GHz
 Memory: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
+(PS. For LSI SAS3008, we need 3 HBA cards for 24 SDDs.)
 SSDS: They must `support the trim command` including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
@@ -129,15 +130,15 @@ $ vim /usr/sofa/config/sofa_config.xml
     - lfsm_cn_pgroup   : Indicates How many protection group SOFA use. \       
                          For Sofa, lfsm_cn_ssds >= cn_ssds_per_hpeu * lfsm_cn_prgroup. \
                          The number of spare disks = lfsm_cn_ssds - ( cn_ssds_per_hpeu * lfsm_cn_prgroup )
-    - lfsm_io_thread   :   \ 
-          - value      ：
-          - settings   : 
-    - lfsm_bh_thread   :   \
-          - value      : 
-          - settings   :        
-    - hba_intr_name    :   \
-          - value      :
-          - settings:  :           
+    - lfsm_io_thread   : Assign specific vcores to SOFA's IO thread \ 
+          - value      ：How many vcores SOFA uses for IO thread. Deafult value: 7 or 8 for io threads \
+          - settings   : Vcores ID. Please don't use the first vcore of physical CPU.
+    - lfsm_bh_thread   : Assign specific vcores to SOFA's bottom half threads. \
+          - value      : How many vcores SOFA uses for IO's botoom half threads.
+          - settings   : Vcores ID. Please don't use the same vcore which lfsm_io_threads lists.
+    - hba_intr_name    : Assign specifc vcores to SOFA's HBA's interrupt handler
+          - value      : get the prefix of HBA's interrupt name in /proc/interrupt
+          - settings:  : Vcores ID. Please independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.       
           
           
        
