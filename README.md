@@ -143,16 +143,8 @@ $ vim /usr/sofa/config/sofa_config.xml
           - settings   : Vcores ID. Please don't use the same vcore which lfsm_io_threads lists. 
                          
     - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \
-          - value      : get the prefix of HBA's interrupt name in /proc/interrupt \
-          - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.      
-                           
-          
-          
-       
-       
-       
-          
-          
+          - value      : Get the prefix of HBA's interrupt name in /proc/interrupt \
+          - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
      If we assign 4 ssds including sdb,sdc,sde,sdd to SOFA, the config should be set up by \
 ```     
