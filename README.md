@@ -135,11 +135,11 @@ $ vim /usr/sofa/config/sofa_config.xml
                          The number of spare disks = lfsm_cn_ssds - ( cn_ssds_per_hpeu * lfsm_cn_prgroup ) 
                          
     - lfsm_io_thread   : Assign specific vcores to SOFA's IO threads \ 
-          - value      ：How many vcores SOFA uses for IO thread. Deafult value: 7 or 8 for io threads \
+          - value      ：How many vcores SOFA uses for IO thread. Default value: 7 or 8. \
           - settings   : Vcores ID. Please don't use the first vcore of physical CPU. 
                          
     - lfsm_bh_thread   : Assign specific vcores to SOFA's bottom half threads. \
-          - value      : How many vcores SOFA uses for IO's bottom half threads. \
+          - value      : How many vcores SOFA uses for IO's bottom half threads. Default value: 3 or 4. \
           - settings   : Vcores ID. Please don't use the same vcore which lfsm_io_threads lists. 
                          
     - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \ 
