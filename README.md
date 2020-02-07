@@ -18,8 +18,8 @@ CPU: Intel CPU with at least 10 virtual cpus and each with 2.8GHz
 Memory: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
-(PS. For LSI SAS3008, we need 3 HBA cards for 24 SDDs.)
-SSDS: They must `support the trim command` including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
+(PS. For LSI SAS3008, we need 3 HBA cards for 24 SDDs.) \
+SSDs: They must `support the trim command` including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
 # Sofa Install Guide
@@ -120,25 +120,32 @@ $ vim /usr/sofa/config/sofa_config.xml
 </configuration>
 ```
 - Major settings definition in sofa_config.xml
-    - lfsm_reinstall   : When starting SOFA, if SOFA keeps existing data or clears all data. \
-          - value      : 0: keep existing data, 1: clear all data.
+    - lfsm_reinstall   : When a user starts SOFA, if SOFA keeps existing data or clears all data. \
+          - value      : 0: keep existing data; 1: clear all data.\
+          \
     - lfsm_cn_ssds     : Assign which SSDs to SOFA  \
-          - value      : How many SSDs Sofa uses.
-          - settings   : Assign which SSDs to SOFA. 
+          - value      : How many SSDs Sofa uses. \
+          - settings   : Assign which SSDs to SOFA. \
+          ]
     - cn_ssds_per_hpeu : Indicate how many SSDs there are in a protection group.  \                
-                         For Raid5 protection mode:  3 <= cn_ssds_per_hpeu <= 16
+                         For Raid5 protection mode:  3 <= cn_ssds_per_hpeu <= 16 \
+                         \
     - lfsm_cn_pgroup   : Indicates How many protection group SOFA uses. \       
                          For Sofa, lfsm_cn_ssds >= cn_ssds_per_hpeu * lfsm_cn_prgroup. \
-                         The number of spare disks = lfsm_cn_ssds - ( cn_ssds_per_hpeu * lfsm_cn_prgroup )
+                         The number of spare disks = lfsm_cn_ssds - ( cn_ssds_per_hpeu * lfsm_cn_prgroup ) \
+                         \
     - lfsm_io_thread   : Assign specific vcores to SOFA's IO threads \ 
           - value      ：How many vcores SOFA uses for IO thread. Deafult value: 7 or 8 for io threads \
-          - settings   : Vcores ID. Please don't use the first vcore of physical CPU.
+          - settings   : Vcores ID. Please don't use the first vcore of physical CPU. \ 
+                         \
     - lfsm_bh_thread   : Assign specific vcores to SOFA's bottom half threads. \
-          - value      : How many vcores SOFA uses for IO's bottom half threads.
-          - settings   : Vcores ID. Please don't use the same vcore which lfsm_io_threads lists.
+          - value      : How many vcores SOFA uses for IO's bottom half threads. \
+          - settings   : Vcores ID. Please don't use the same vcore which lfsm_io_threads lists. \
+                         \
     - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \ 
-          - value      : get the prefix of HBA's interrupt name in /proc/interrupt
-          - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.       
+          - value      : get the prefix of HBA's interrupt name in /proc/interrupt \
+          - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.      \
+                          \ 
           
           
        
