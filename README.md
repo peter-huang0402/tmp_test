@@ -155,7 +155,7 @@ $ vim /usr/sofa/config/sofa_config.xml
     
          Check how many ssds there are in your system
          
-            ```
+```
             $ lsblk
             NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
             sda      8:0    0 931.5G  0 disk 
@@ -184,7 +184,7 @@ $ vim /usr/sofa/config/sofa_config.xml
             sds     65:32   0 447.1G  0 disk 
             sdt     65:48   0 447.1G  0 disk 
             sdu     65:64   0 447.1G  0 disk
-            ```          
+```          
           
          In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs.                              
          
