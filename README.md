@@ -147,9 +147,9 @@ $ vim /usr/sofa/config/sofa_config.xml
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
 * Configure SOFA settings 
-Step1. In my machine I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs.
-Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread)
-Step3. Assign vocres to HBA's interrupt handler.
+Step1. In my machine I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. \
+Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) \
+Step3. Assign vocres to HBA's interrupt handler. \
 
 
 * Check how many ssds there are in your system.
@@ -184,6 +184,62 @@ sdt     65:48   0 447.1G  0 disk
 sdu     65:64   0 447.1G  0 disk
 ```
 In my system there are 20 available ssds from sdb to sdu except sda used for operation system.
+
+
+```
+$ cat /proc/cpuinfo | grep processor
+processor	: 0
+processor	: 1
+processor	: 2
+.......................................
+.......................................
+processor	: 37
+processor	: 38
+processor	: 39
+```
+
+
+
+```
+$ lspci   | grep LSI
+02:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
+03:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
+83:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
+```
+
+```
+$ lspci -v -s 03:00.0  | grep "Kernel driver"
+Kernel driver in use: mpt3sas
+```
+
+```
+$  cat /proc/interrupts  | grep mpt3sas  |  awk  '{ print $NF }'
+mpt3sas0-msix0
+mpt3sas0-msix1
+mpt3sas0-msix2
+mpt3sas0-msix3
+mpt3sas0-msix4
+mpt3sas0-msix5
+mpt3sas0-msix6
+mpt3sas0-msix7
+mpt3sas1-msix0
+mpt3sas1-msix1
+mpt3sas1-msix2
+mpt3sas1-msix3
+mpt3sas1-msix4
+mpt3sas1-msix5
+mpt3sas1-msix6
+mpt3sas1-msix7
+mpt3sas2-msix0
+mpt3sas2-msix1
+mpt3sas2-msix2
+mpt3sas2-msix3
+mpt3sas2-msix4
+mpt3sas2-msix5
+mpt3sas2-msix6
+mpt3sas2-msix7
+```
+
 
 ```
 <?xml version="1.0"?>
