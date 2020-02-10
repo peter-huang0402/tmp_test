@@ -33,7 +33,7 @@ Concerning high availability(HA) feature, SOFA adopt active-active mode, so the 
 
 # Hardware Support
 ---
-CPU: Intel CPU with at least 10 virtual cpus and with 2.8GHz each \
+CPU: Intel CPU with at least 10 virtual CPUs and with 2.8GHz each \
 Memory: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
@@ -239,7 +239,7 @@ $ vim /usr/sofa/config/sofa_config.xml
             processor	: 39
         ```
         
-         Know these vcores are located on which physical cores. In my machine, physical cpu 0 has 0 - 9 and 20 - 29 vcores. Physical cpu 1 has 10 - 19 and 30 - 39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical cpu 0 and 10 is the frist vcore on physcial cpu 1. So, vocre 0 and 10 are not assigned to SOFA.
+         Know these vcores are located on which physical cores. In my machine, physical CPU 0 has 0 - 9 and 20 - 29 vcores. Physical CPU 1 has 10 - 19 and 30 - 39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical CPU 0 and 10 is the frist vcore on physcial CPU 1. So, vocre 0 and 10 are not assigned to SOFA.
             ![](https://i.imgur.com/ayxOPBr.jpg)
 
          Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
@@ -393,8 +393,6 @@ lfsm   252:0    0   1.3T  0 disk
 $ dmesg | grep "main INFO initial all sofa components done"
 [239305.799428] [SOFA] main INFO initial all sofa components done
 ```
-
-
 
 * Stop SOFA
 ```
