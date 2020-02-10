@@ -148,12 +148,12 @@ $ vim /usr/sofa/config/sofa_config.xml
           
 * Configure SOFA settings \
     Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
-    In my machine I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. \
+    In my machine I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
 
-    Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA.   \
-    In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) \
+    Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. \
+    In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
     
-    Step3. Assign vocres to HBA's interrupt handler. \
+    Step3. Assign vocres to HBA's interrupt handler. 
 
 
 * Check how many ssds there are in your system.
