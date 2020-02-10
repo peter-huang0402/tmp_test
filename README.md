@@ -147,12 +147,12 @@ $ vim /usr/sofa/config/sofa_config.xml
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
 * Configure SOFA settings \
-    Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \    
+    Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
     Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. \
     Step3. Assign vocres to HBA's interrupt handler. 
 
-    - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
-                
+    - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup                
+    
         Check how many ssds there are in your system.        
         ``` 
         $ lsblk
@@ -184,6 +184,7 @@ $ vim /usr/sofa/config/sofa_config.xml
         sdt     65:48   0 447.1G  0 disk 
         sdu     65:64   0 447.1G  0 disk
         ```
+        
         In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
         ```
         <property>
@@ -201,23 +202,38 @@ $ vim /usr/sofa/config/sofa_config.xml
         </property> 
         ```
 
-```
-$ cat /proc/cpuinfo | grep processor
-processor	: 0
-processor	: 1
-processor	: 2
-.......................................
-.......................................
-processor	: 37
-processor	: 38
-processor	: 39
-```
+    - Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA
+    
+        Check how many vcores there are in your machine. 0~39 vcores and total 40 vcores in my machine. 
+        ```
+        $ cat /proc/cpuinfo | grep processor
+        processor	: 0
+        processor	: 1
+        processor	: 2
+        .......................................
+        .......................................
+        processor	: 37
+        processor	: 38
+        processor	: 39
+        ```
+        
+        Know these vcores are located on which physical cores. In my machine, physical cpu 0 has 0~9 and 20~29 vcores. Physical cpu 1 has 10~19 and 30~39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical cpu 0 and 10 is the frist vcore on physcial cpu 1. So, vocre 0 and 10 are not assigned in sofa_config.xml.
+        ![](https://i.imgur.com/ayxOPBr.jpg)
 
-![](https://i.imgur.com/ayxOPBr.jpg)
-
-
-In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
-
+        Given SOFA performance, please assign vcores of same physical cpu. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
+        ```
+        <property>
+            <name>lfsm_io_thread</name>
+            <value>7</value>
+            <setting> 1,2,3,4,5,6,7 </setting>
+        </property>
+        <property>
+            <name>lfsm_bh_thread</name>
+            <value>3</value>
+            <setting> 8,9,20 </setting>
+        </property>
+        ```
+        
 ```
 $ lspci   | grep LSI
 02:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
