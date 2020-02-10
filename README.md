@@ -147,48 +147,59 @@ $ vim /usr/sofa/config/sofa_config.xml
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
 * Configure SOFA settings \
-    Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
-    In my machine I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
-
+    Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \    
     Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. \
-    In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
-    
     Step3. Assign vocres to HBA's interrupt handler. 
 
-
-* Check how many ssds there are in your system.
-```
-$ lsblk
-NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda      8:0    0 931.5G  0 disk 
-|-sda1   8:1    0   500M  0 part /boot
-|-sda2   8:2    0  31.4G  0 part [SWAP]
-|-sda3   8:3    0    50G  0 part /
-|-sda4   8:4    0     1K  0 part 
-`-sda5   8:5    0 849.6G  0 part /home
-sdb      8:16   0 447.1G  0 disk 
-sdc      8:32   0 447.1G  0 disk 
-sdd      8:48   0 447.1G  0 disk 
-sde      8:64   0 447.1G  0 disk 
-sdf      8:80   0 447.1G  0 disk 
-sdg      8:96   0 447.1G  0 disk 
-sdh      8:112  0 447.1G  0 disk 
-sdi      8:128  0 447.1G  0 disk 
-sdj      8:144  0 447.1G  0 disk 
-sdk      8:160  0 447.1G  0 disk 
-sdl      8:176  0 447.1G  0 disk 
-sdm      8:192  0 447.1G  0 disk 
-sdn      8:208  0 447.1G  0 disk 
-sdo      8:224  0 447.1G  0 disk 
-sdp      8:240  0 447.1G  0 disk 
-sdq     65:0    0 447.1G  0 disk 
-sdr     65:16   0 447.1G  0 disk 
-sds     65:32   0 447.1G  0 disk 
-sdt     65:48   0 447.1G  0 disk 
-sdu     65:64   0 447.1G  0 disk
-```
-In my system there are 20 available ssds from sdb to sdu except sda used for operation system.
-
+    - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
+                
+        Check how many ssds there are in your system.        
+        ``` 
+        $ lsblk
+        NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+        sda      8:0    0 931.5G  0 disk 
+        |-sda1   8:1    0   500M  0 part /boot
+        |-sda2   8:2    0  31.4G  0 part [SWAP]
+        |-sda3   8:3    0    50G  0 part /
+        |-sda4   8:4    0     1K  0 part 
+        `-sda5   8:5    0 849.6G  0 part /home
+        sdb      8:16   0 447.1G  0 disk 
+        sdc      8:32   0 447.1G  0 disk 
+        sdd      8:48   0 447.1G  0 disk 
+        sde      8:64   0 447.1G  0 disk 
+        sdf      8:80   0 447.1G  0 disk 
+        sdg      8:96   0 447.1G  0 disk 
+        sdh      8:112  0 447.1G  0 disk 
+        sdi      8:128  0 447.1G  0 disk 
+        sdj      8:144  0 447.1G  0 disk 
+        sdk      8:160  0 447.1G  0 disk 
+        sdl      8:176  0 447.1G  0 disk 
+        sdm      8:192  0 447.1G  0 disk 
+        sdn      8:208  0 447.1G  0 disk 
+        sdo      8:224  0 447.1G  0 disk 
+        sdp      8:240  0 447.1G  0 disk 
+        sdq     65:0    0 447.1G  0 disk 
+        sdr     65:16   0 447.1G  0 disk 
+        sds     65:32   0 447.1G  0 disk 
+        sdt     65:48   0 447.1G  0 disk 
+        sdu     65:64   0 447.1G  0 disk
+        ```
+        In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
+        ```
+        <property>
+            <name>lfsm_cn_ssds</name>
+            <value>20</value>
+            <setting>b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u</setting>
+        </property>
+        <property>
+            <name>cn_ssds_per_hpeu</name>
+            <value>10</value>
+        </property>
+        <property>
+            <name>lfsm_cn_pgroup</name>
+            <value>2</value>
+        </property> 
+        ```
 
 ```
 $ cat /proc/cpuinfo | grep processor
@@ -204,6 +215,8 @@ processor	: 39
 
 ![](https://i.imgur.com/ayxOPBr.jpg)
 
+
+In default we prefer to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
 
 ```
 $ lspci   | grep LSI
