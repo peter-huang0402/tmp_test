@@ -188,7 +188,7 @@ $ vim /usr/sofa/config/sofa_config.xml
           
          In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs.                              
          
-            ```
+        ```
             <property>
                 <name>lfsm_cn_ssds</name>
                 <value>20</value>
@@ -202,13 +202,13 @@ $ vim /usr/sofa/config/sofa_config.xml
                 <name>lfsm_cn_pgroup</name>
                 <value>2</value>
             </property> 
-            ```
+        ```
 
     - Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA
     
          Check how many vcores there are in your machine. 0~39 vcores and total 40 vcores in my machine. 
           
-            ```
+        ```
             $ cat /proc/cpuinfo | grep processor
             processor	: 0
             processor	: 1
@@ -218,14 +218,14 @@ $ vim /usr/sofa/config/sofa_config.xml
             processor	: 37
             processor	: 38
             processor	: 39
-            ```
+        ```
         
          Know these vcores are located on which physical cores. In my machine, physical cpu 0 has 0 - 9 and 20 - 29 vcores. Physical cpu 1 has 10 - 19 and 30 - 39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical cpu 0 and 10 is the frist vcore on physcial cpu 1. So, vocre 0 and 10 are not assigned to SOFA.
             ![](https://i.imgur.com/ayxOPBr.jpg)
 
          Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
          
-            ```
+         ```
             <property>
                 <name>lfsm_io_thread</name>
                 <value>7</value>
@@ -236,29 +236,29 @@ $ vim /usr/sofa/config/sofa_config.xml
                 <value>3</value>
                 <setting>8,9,20</setting>
             </property>
-            ```
+         ```
         
     - Step3. Assign vocres to HBA's interrupt handler
         
          Check your HBA card and get `bus:device.function` of HBA card. In my computer, there are 3 HBA cards and the frist hba card lists `02:00.0`. 
          
-            ```
+         ```
             $ lspci   | grep LSI
             02:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
             03:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
             83:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
-            ```        
+         ```        
         
          Get your HBA card driver by bus:device.function.
          
-            ```
+         ```
             $ lspci -v -s 02:00.0  | grep "Kernel driver"
             Kernel driver in use: mpt3sas
-            ```
+         ```
         
          Get the prefix of interrupt handler for HBA cards. In my machine, my interrupt handlers are mpt3sas0, mpt3sas1 and mpt3sas2. 
          
-            ```
+         ```
             $  cat /proc/interrupts  | grep mpt3sas  |  awk  '{ print $NF }'
             mpt3sas0-msix0
             mpt3sas0-msix1
@@ -274,11 +274,11 @@ $ vim /usr/sofa/config/sofa_config.xml
             mpt3sas2-msix1
             mpt3sas2-msix2
             .......................................            
-            ```
+         ```
         
          Assign vcore and interrupt handler's prefix to hba_intr_name proterty of sofa_config.xml. And I assign vcores which is located on the same physical CPU as vcores of lfsm_io_thread and lfsm_bh_thread are.          
          
-            ```
+         ```
             <property>
                 <name>hba_intr_name</name>
                 <value>mpt3sas0</value>
@@ -294,11 +294,11 @@ $ vim /usr/sofa/config/sofa_config.xml
                 <value>mpt3sas2</value>
                 <setting>23</setting>
             </property>
-            ```
+         ```
         
     - List all sofa_config.xml setting
     
-            ```
+         ```
             <?xml version="1.0"?>
             <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
             <configuration>
@@ -355,7 +355,7 @@ $ vim /usr/sofa/config/sofa_config.xml
                     <setting>23</setting>
                 </property>
             </configuration>
-            ```
+         ```
 
 ## Run And Stop SOFA
 ---
