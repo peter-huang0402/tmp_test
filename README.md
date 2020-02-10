@@ -152,201 +152,200 @@ $ vim /usr/sofa/config/sofa_config.xml
     Step3. Assign vocres to HBA's interrupt handler.     
 
     - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup                
-    
-        Check how many ssds there are in your system.        
-        ``` 
-        $ lsblk
-        NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-        sda      8:0    0 931.5G  0 disk 
-        |-sda1   8:1    0   500M  0 part /boot
-        |-sda2   8:2    0  31.4G  0 part [SWAP]
-        |-sda3   8:3    0    50G  0 part /
-        |-sda4   8:4    0     1K  0 part 
-        `-sda5   8:5    0 849.6G  0 part /home
-        sdb      8:16   0 447.1G  0 disk 
-        sdc      8:32   0 447.1G  0 disk 
-        sdd      8:48   0 447.1G  0 disk 
-        sde      8:64   0 447.1G  0 disk 
-        sdf      8:80   0 447.1G  0 disk 
-        sdg      8:96   0 447.1G  0 disk 
-        sdh      8:112  0 447.1G  0 disk 
-        sdi      8:128  0 447.1G  0 disk 
-        sdj      8:144  0 447.1G  0 disk 
-        sdk      8:160  0 447.1G  0 disk 
-        sdl      8:176  0 447.1G  0 disk 
-        sdm      8:192  0 447.1G  0 disk 
-        sdn      8:208  0 447.1G  0 disk 
-        sdo      8:224  0 447.1G  0 disk 
-        sdp      8:240  0 447.1G  0 disk 
-        sdq     65:0    0 447.1G  0 disk 
-        sdr     65:16   0 447.1G  0 disk 
-        sds     65:32   0 447.1G  0 disk 
-        sdt     65:48   0 447.1G  0 disk 
-        sdu     65:64   0 447.1G  0 disk
-        ```
+          - Check how many ssds there are in your system.        
+            ``` 
+            $ lsblk
+            NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+            sda      8:0    0 931.5G  0 disk 
+            |-sda1   8:1    0   500M  0 part /boot
+            |-sda2   8:2    0  31.4G  0 part [SWAP]
+            |-sda3   8:3    0    50G  0 part /
+            |-sda4   8:4    0     1K  0 part 
+            `-sda5   8:5    0 849.6G  0 part /home
+            sdb      8:16   0 447.1G  0 disk 
+            sdc      8:32   0 447.1G  0 disk 
+            sdd      8:48   0 447.1G  0 disk 
+            sde      8:64   0 447.1G  0 disk 
+            sdf      8:80   0 447.1G  0 disk 
+            sdg      8:96   0 447.1G  0 disk 
+            sdh      8:112  0 447.1G  0 disk 
+            sdi      8:128  0 447.1G  0 disk 
+            sdj      8:144  0 447.1G  0 disk 
+            sdk      8:160  0 447.1G  0 disk 
+            sdl      8:176  0 447.1G  0 disk 
+            sdm      8:192  0 447.1G  0 disk 
+            sdn      8:208  0 447.1G  0 disk 
+            sdo      8:224  0 447.1G  0 disk 
+            sdp      8:240  0 447.1G  0 disk 
+            sdq     65:0    0 447.1G  0 disk 
+            sdr     65:16   0 447.1G  0 disk 
+            sds     65:32   0 447.1G  0 disk 
+            sdt     65:48   0 447.1G  0 disk 
+            sdu     65:64   0 447.1G  0 disk
+            ```
         
-        In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
-        ```
-        <property>
-            <name>lfsm_cn_ssds</name>
-            <value>20</value>
-            <setting>b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u</setting>
-        </property>
-        <property>
-            <name>cn_ssds_per_hpeu</name>
-            <value>10</value>
-        </property>
-        <property>
-            <name>lfsm_cn_pgroup</name>
-            <value>2</value>
-        </property> 
-        ```
+          - In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
+            ```
+            <property>
+                <name>lfsm_cn_ssds</name>
+                <value>20</value>
+                <setting>b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u</setting>
+            </property>
+            <property>
+                <name>cn_ssds_per_hpeu</name>
+                <value>10</value>
+            </property>
+            <property>
+                <name>lfsm_cn_pgroup</name>
+                <value>2</value>
+            </property> 
+            ```
 
     - Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA
     
-        Check how many vcores there are in your machine. 0~39 vcores and total 40 vcores in my machine. 
-        ```
-        $ cat /proc/cpuinfo | grep processor
-        processor	: 0
-        processor	: 1
-        processor	: 2
-        .......................................
-        .......................................
-        processor	: 37
-        processor	: 38
-        processor	: 39
-        ```
+          - Check how many vcores there are in your machine. 0~39 vcores and total 40 vcores in my machine. 
+            ```
+            $ cat /proc/cpuinfo | grep processor
+            processor	: 0
+            processor	: 1
+            processor	: 2
+            .......................................
+            .......................................
+            processor	: 37
+            processor	: 38
+            processor	: 39
+            ```
         
-        Know these vcores are located on which physical cores. In my machine, physical cpu 0 has 0~9 and 20~29 vcores. Physical cpu 1 has 10-19 and 30-39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical cpu 0 and 10 is the frist vcore on physcial cpu 1. So, vocre 0 and 10 are not assigned to SOFA.
-        ![](https://i.imgur.com/ayxOPBr.jpg)
+          - Know these vcores are located on which physical cores. In my machine, physical cpu 0 has 0~9 and 20~29 vcores. Physical cpu 1 has 10-19 and 30-39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical cpu 0 and 10 is the frist vcore on physcial cpu 1. So, vocre 0 and 10 are not assigned to SOFA.
+            ![](https://i.imgur.com/ayxOPBr.jpg)
 
-        Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
-        ```
-        <property>
-            <name>lfsm_io_thread</name>
-            <value>7</value>
-            <setting>1,2,3,4,5,6,7</setting>
-        </property>
-        <property>
-            <name>lfsm_bh_thread</name>
-            <value>3</value>
-            <setting>8,9,20</setting>
-        </property>
-        ```
+          - Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
+            ```
+            <property>
+                <name>lfsm_io_thread</name>
+                <value>7</value>
+                <setting>1,2,3,4,5,6,7</setting>
+            </property>
+            <property>
+                <name>lfsm_bh_thread</name>
+                <value>3</value>
+                <setting>8,9,20</setting>
+            </property>
+            ```
         
-     - Step3. Assign vocres to HBA's interrupt handler.
+    - Step3. Assign vocres to HBA's interrupt handler
         
-        Check your HBA card and get bus:device.function of HBA card. In my computer, there are 3 HBA cards and the frist hba card lists `02:00.0`. 
-        ```
-        $ lspci   | grep LSI
-        02:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
-        03:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
-        83:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
-        ```        
+          - Check your HBA card and get `bus:device.function` of HBA card. In my computer, there are 3 HBA cards and the frist hba card lists `02:00.0`. 
+            ```
+            $ lspci   | grep LSI
+            02:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
+            03:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
+            83:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
+            ```        
         
-        Get your HBA card driver by bus:device.function.
-        ```
-        $ lspci -v -s 02:00.0  | grep "Kernel driver"
-        Kernel driver in use: mpt3sas
-        ```
+          - Get your HBA card driver by bus:device.function.
+            ```
+            $ lspci -v -s 02:00.0  | grep "Kernel driver"
+            Kernel driver in use: mpt3sas
+            ```
         
-        Get the prefix of interrupt handler for HBA cards. In my machine, my interrupt handlers are mpt3sas0, mpt3sas1 and mpt3sas2. 
-        ```
-        $  cat /proc/interrupts  | grep mpt3sas  |  awk  '{ print $NF }'
-        mpt3sas0-msix0
-        mpt3sas0-msix1
-        mpt3sas0-msix2
-        mpt3sas0-msix3
-        mpt3sas0-msix4
-        mpt3sas1-msix0
-        mpt3sas1-msix1
-        mpt3sas1-msix2
-        mpt3sas1-msix3
-        mpt3sas1-msix4        
-        mpt3sas2-msix0
-        mpt3sas2-msix1
-        mpt3sas2-msix2
-        mpt3sas2-msix3        
-        ```
+          - Get the prefix of interrupt handler for HBA cards. In my machine, my interrupt handlers are mpt3sas0, mpt3sas1 and mpt3sas2. 
+            ```
+            $  cat /proc/interrupts  | grep mpt3sas  |  awk  '{ print $NF }'
+            mpt3sas0-msix0
+            mpt3sas0-msix1
+            mpt3sas0-msix2
+            mpt3sas0-msix3
+            .......................................
+            mpt3sas1-msix0
+            mpt3sas1-msix1
+            mpt3sas1-msix2
+            mpt3sas1-msix3
+            ....................................... 
+            mpt3sas2-msix0
+            mpt3sas2-msix1
+            mpt3sas2-msix2
+            .......................................            
+            ```
         
-        Assign vcore and interrupt handler's prefix to hba_intr_name proterty of sofa_config.xml. And I assign vcores which is located on the same physical CPU as vcores of lfsm_io_thread and lfsm_bh_thread are.          
-        ```
-        <property>
-            <name>hba_intr_name</name>
-            <value>mpt3sas0</value>
-            <setting>21</setting>
-        </property>
-        <property>
-            <name>hba_intr_name</name>
-            <value>mpt3sas1</value>
-            <setting>22</setting>
-        </property>
-        <property>
-            <name>hba_intr_name</name>
-            <value>mpt3sas2</value>
-            <setting>23</setting>
-        </property>
-        ```
+          - Assign vcore and interrupt handler's prefix to hba_intr_name proterty of sofa_config.xml. And I assign vcores which is located on the same physical CPU as vcores of lfsm_io_thread and lfsm_bh_thread are.          
+            ```
+            <property>
+                <name>hba_intr_name</name>
+                <value>mpt3sas0</value>
+                <setting>21</setting>
+            </property>
+            <property>
+                <name>hba_intr_name</name>
+                <value>mpt3sas1</value>
+                <setting>22</setting>
+            </property>
+            <property>
+                <name>hba_intr_name</name>
+                <value>mpt3sas2</value>
+                <setting>23</setting>
+            </property>
+            ```
         
-    - List my sofa_config.xml setting
-    ```
-    <?xml version="1.0"?>
-    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-    <configuration>
-        <property>
-            <name>lfsm_reinstall</name>
-            <value>1</value>
-        </property>
-        <property>
-            <name>lfsm_cn_ssds</name>
-            <value>4</value>
-            <setting>b,c,d,e</setting>
-        </property>
-        <property>
-            <name>cn_ssds_per_hpeu</name>
-            <value>2</value>
-        </property>
-        <property>
-            <name>lfsm_cn_pgroup</name>
-            <value>2</value>
-        </property>
-        <property>
-            <name>lfsm_only</name>
-            <value>1</value>
-        </property>
-        <property>
-            <name>lfsm_raid6</name>
-            <value>1</value>
-        </property>
-        <property>
-            <name>lfsm_io_thread</name>
-            <value>10</value>
-            <setting> 11,12,13,14,15,16,17,18,19,30 </setting>
-        </property>
-        <property>
-            <name>lfsm_bh_thread</name>
-            <value>5</value>
-            <setting> 31,32,33,34,35 </setting>
-        </property>
-    .......................................
-    .......................................
-        <property>
-            <name>hba_intr_name</name>
-            <value>mpt3sas0</value>
-            <setting>19,20</setting>
-        </property>
-        <property>
-            <name>hba_intr_name</name>
-            <value>mpt3sas1</value>
-            <setting>21,22</setting>
-        </property>
-        <property>
-            <name>hba_intr_name</name>
-            <value>mpt3sas2</value>
-            <setting>23</setting>
-        </property>
-    </configuration>
-    ```
+    - List all sofa_config.xml setting
+            ```
+            <?xml version="1.0"?>
+            <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+            <configuration>
+                <property>
+                    <name>lfsm_reinstall</name>
+                    <value>1</value>
+                </property>
+                <property>
+                    <name>lfsm_cn_ssds</name>
+                    <value>4</value>
+                    <setting>b,c,d,e</setting>
+                </property>
+                <property>
+                    <name>cn_ssds_per_hpeu</name>
+                    <value>2</value>
+                </property>
+                <property>
+                    <name>lfsm_cn_pgroup</name>
+                    <value>2</value>
+                </property>
+                <property>
+                    <name>lfsm_only</name>
+                    <value>1</value>
+                </property>
+                <property>
+                    <name>lfsm_raid6</name>
+                    <value>1</value>
+                </property>
+                <property>
+                    <name>lfsm_io_thread</name>
+                    <value>10</value>
+                    <setting> 11,12,13,14,15,16,17,18,19,30 </setting>
+                </property>
+                <property>
+                    <name>lfsm_bh_thread</name>
+                    <value>5</value>
+                    <setting> 31,32,33,34,35 </setting>
+                </property>
+            .......................................
+            .......................................
+                <property>
+                    <name>hba_intr_name</name>
+                    <value>mpt3sas0</value>
+                    <setting>19,20</setting>
+                </property>
+                <property>
+                    <name>hba_intr_name</name>
+                    <value>mpt3sas1</value>
+                    <setting>21,22</setting>
+                </property>
+                <property>
+                    <name>hba_intr_name</name>
+                    <value>mpt3sas2</value>
+                    <setting>23</setting>
+                </property>
+            </configuration>
+            ```
 
 ## Run And Stop SOFA
 ---
