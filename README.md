@@ -131,12 +131,6 @@ $ vim /usr/sofa/config/sofa_config.xml
         <setting>b-c</setting>
     </property>
 .......................................
-.......................................
-    <property>
-        <name>lfsm_gc_on_lower_ratio</name>
-        <value>125</value>
-    </property>
-</configuration>
 ```
 - Major settings definition in sofa_config.xml
     - lfsm_reinstall   : When a user starts SOFA, if SOFA keeps existing data or clears all data. \
