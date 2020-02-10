@@ -340,7 +340,7 @@ $ sh /home/$(whoami)/sofa/packages/undeploy_sofa.sh
 
 
 *A recommended topology below:*
-![](https://i.imgur.com/DuKZweZ.png)
+![](https://i.imgur.com/ayxOPBr.jpg)
 
 * If you only have one or two machine, you can reference this setting.
 
