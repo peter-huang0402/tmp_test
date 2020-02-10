@@ -152,7 +152,8 @@ $ vim /usr/sofa/config/sofa_config.xml
     Step3. Assign vocres to HBA's interrupt handler.     
 
     - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup                
-          - Check how many ssds there are in your system.        
+          - Check how many ssds there are in your system.                  
+          
             ``` 
             $ lsblk
             NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
@@ -161,7 +162,7 @@ $ vim /usr/sofa/config/sofa_config.xml
             |-sda2   8:2    0  31.4G  0 part [SWAP]
             |-sda3   8:3    0    50G  0 part /
             |-sda4   8:4    0     1K  0 part 
-            `-sda5   8:5    0 849.6G  0 part /home
+             -sda5   8:5    0 849.6G  0 part /home
             sdb      8:16   0 447.1G  0 disk 
             sdc      8:32   0 447.1G  0 disk 
             sdd      8:48   0 447.1G  0 disk 
@@ -183,8 +184,9 @@ $ vim /usr/sofa/config/sofa_config.xml
             sdt     65:48   0 447.1G  0 disk 
             sdu     65:64   0 447.1G  0 disk
             ```
-        
+            
           - In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
+          
             ```
             <property>
                 <name>lfsm_cn_ssds</name>
