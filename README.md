@@ -316,7 +316,7 @@ $ vim /usr/sofa/config/sofa_config.xml
             </property>
          ```
         
-    - List all sofa_config.xml setting
+    - List my major sofa_config.xml setting
     
          ```
             <?xml version="1.0"?>
@@ -328,12 +328,12 @@ $ vim /usr/sofa/config/sofa_config.xml
                 </property>
                 <property>
                     <name>lfsm_cn_ssds</name>
-                    <value>4</value>
-                    <setting>b,c,d,e</setting>
+                    <value>20</value>
+                    <setting>b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u</setting>
                 </property>
                 <property>
                     <name>cn_ssds_per_hpeu</name>
-                    <value>2</value>
+                    <value>10</value>
                 </property>
                 <property>
                     <name>lfsm_cn_pgroup</name>
@@ -342,32 +342,28 @@ $ vim /usr/sofa/config/sofa_config.xml
                 <property>
                     <name>lfsm_only</name>
                     <value>1</value>
-                </property>
-                <property>
-                    <name>lfsm_raid6</name>
-                    <value>1</value>
-                </property>
+                </property>                
                 <property>
                     <name>lfsm_io_thread</name>
-                    <value>10</value>
-                    <setting> 11,12,13,14,15,16,17,18,19,30 </setting>
+                    <value>7</value>
+                    <setting>1,2,3,4,5,6,7</setting>
                 </property>
                 <property>
                     <name>lfsm_bh_thread</name>
-                    <value>5</value>
-                    <setting> 31,32,33,34,35 </setting>
+                    <value>3</value>
+                    <setting>8,9,20</setting>
                 </property>
             .......................................
             .......................................
                 <property>
                     <name>hba_intr_name</name>
                     <value>mpt3sas0</value>
-                    <setting>19,20</setting>
+                    <setting>21</setting>
                 </property>
                 <property>
                     <name>hba_intr_name</name>
                     <value>mpt3sas1</value>
-                    <setting>21,22</setting>
+                    <setting>22</setting>
                 </property>
                 <property>
                     <name>hba_intr_name</name>
