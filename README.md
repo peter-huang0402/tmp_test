@@ -127,8 +127,8 @@ $ vim /usr/sofa/config/sofa_config.xml
     </property>
     <property>
         <name>lfsm_cn_ssds</name>
-        <value>2</value>
-        <setting>b-c</setting>
+        <value>3</value>
+        <setting>b,c,d</setting>
     </property>
 .......................................
 ```
