@@ -146,7 +146,7 @@ $ vim /usr/sofa/config/sofa_config.xml
           - value      : Get the prefix of HBA's interrupt name in /proc/interrupt \
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
-* Configure SOFA settings
+* Configure SOFA settings \
     Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
     In my machine I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. \
 
