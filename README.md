@@ -151,10 +151,11 @@ $ vim /usr/sofa/config/sofa_config.xml
     Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. \
     Step3. Assign vocres to HBA's interrupt handler.     
 
-    - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup                
-          - Check how many ssds there are in your system.                  
-          
-            ``` 
+    - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup                 
+    
+         Check how many ssds there are in your system
+         
+            ```
             $ lsblk
             NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
             sda      8:0    0 931.5G  0 disk 
@@ -183,10 +184,10 @@ $ vim /usr/sofa/config/sofa_config.xml
             sds     65:32   0 447.1G  0 disk 
             sdt     65:48   0 447.1G  0 disk 
             sdu     65:64   0 447.1G  0 disk
-            ```
-            
-          - In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs. 
+            ```          
           
+         In my system there are 20 available ssds from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protecton groups, which means each group is assigned 10 SSDs.                              
+         
             ```
             <property>
                 <name>lfsm_cn_ssds</name>
@@ -205,7 +206,8 @@ $ vim /usr/sofa/config/sofa_config.xml
 
     - Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA
     
-          - Check how many vcores there are in your machine. 0~39 vcores and total 40 vcores in my machine. 
+         Check how many vcores there are in your machine. 0~39 vcores and total 40 vcores in my machine. 
+          
             ```
             $ cat /proc/cpuinfo | grep processor
             processor	: 0
@@ -218,10 +220,11 @@ $ vim /usr/sofa/config/sofa_config.xml
             processor	: 39
             ```
         
-          - Know these vcores are located on which physical cores. In my machine, physical cpu 0 has 0~9 and 20~29 vcores. Physical cpu 1 has 10-19 and 30-39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical cpu 0 and 10 is the frist vcore on physcial cpu 1. So, vocre 0 and 10 are not assigned to SOFA.
+         Know these vcores are located on which physical cores. In my machine, physical cpu 0 has 0~9 and 20~29 vcores. Physical cpu 1 has 10 to 19 and 30 to 39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical cpu 0 and 10 is the frist vcore on physcial cpu 1. So, vocre 0 and 10 are not assigned to SOFA.
             ![](https://i.imgur.com/ayxOPBr.jpg)
 
-          - Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
+         Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
+         
             ```
             <property>
                 <name>lfsm_io_thread</name>
@@ -237,7 +240,8 @@ $ vim /usr/sofa/config/sofa_config.xml
         
     - Step3. Assign vocres to HBA's interrupt handler
         
-          - Check your HBA card and get `bus:device.function` of HBA card. In my computer, there are 3 HBA cards and the frist hba card lists `02:00.0`. 
+         Check your HBA card and get `bus:device.function` of HBA card. In my computer, there are 3 HBA cards and the frist hba card lists `02:00.0`. 
+         
             ```
             $ lspci   | grep LSI
             02:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
@@ -245,13 +249,15 @@ $ vim /usr/sofa/config/sofa_config.xml
             83:00.0 Serial Attached SCSI controller: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 (rev 02)
             ```        
         
-          - Get your HBA card driver by bus:device.function.
+         Get your HBA card driver by bus:device.function.
+         
             ```
             $ lspci -v -s 02:00.0  | grep "Kernel driver"
             Kernel driver in use: mpt3sas
             ```
         
-          - Get the prefix of interrupt handler for HBA cards. In my machine, my interrupt handlers are mpt3sas0, mpt3sas1 and mpt3sas2. 
+         Get the prefix of interrupt handler for HBA cards. In my machine, my interrupt handlers are mpt3sas0, mpt3sas1 and mpt3sas2. 
+         
             ```
             $  cat /proc/interrupts  | grep mpt3sas  |  awk  '{ print $NF }'
             mpt3sas0-msix0
@@ -270,7 +276,8 @@ $ vim /usr/sofa/config/sofa_config.xml
             .......................................            
             ```
         
-          - Assign vcore and interrupt handler's prefix to hba_intr_name proterty of sofa_config.xml. And I assign vcores which is located on the same physical CPU as vcores of lfsm_io_thread and lfsm_bh_thread are.          
+         Assign vcore and interrupt handler's prefix to hba_intr_name proterty of sofa_config.xml. And I assign vcores which is located on the same physical CPU as vcores of lfsm_io_thread and lfsm_bh_thread are.          
+         
             ```
             <property>
                 <name>hba_intr_name</name>
@@ -290,6 +297,7 @@ $ vim /usr/sofa/config/sofa_config.xml
             ```
         
     - List all sofa_config.xml setting
+    
             ```
             <?xml version="1.0"?>
             <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
