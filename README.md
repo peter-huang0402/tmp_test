@@ -240,6 +240,7 @@ $ vim /usr/sofa/config/sofa_config.xml
         ```
         
          Know these vcores are located on which physical cores. In my machine, physical CPU 0 has 0 - 9 and 20 - 29 vcores. Physical CPU 1 has 10 - 19 and 30 - 39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical CPU 0 and 10 is the frist vcore on physcial CPU 1. So, vocre 0 and 10 are not assigned to SOFA.
+         
             ![](https://i.imgur.com/ayxOPBr.jpg)
 
          Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default SOFA prefers to assign 7:3 or 8:4.  (lfsm_io_thread:lfsm_bh_thread) 
