@@ -5,7 +5,7 @@
 Summary
 -------
 
-Sofa is a log-structured flash array management system, which not only converts the random writes to sequential writes, but also fairly dispatches all writes IO requests across all SSDs. Also, the flash translation layer (FTL) in SOFA is designed on top of rather than below disk array management logic, so SOFA easily manages global resource including global wear leveling and garbage collection across SSDs. Based on its architecture and design, SOFA brings the benefits of linear scalability on its throughput of random write and sequential write with constituent SSDs. More importantly, SOFA successfully make throughput of random write reach that of sequential write.
+Sofa is a log-structured flash array management system, which not only converts the random writes to sequential writes, but also fairly dispatches all writes IO requests across all SSDs. Also, the flash translation layer (FTL) in SOFA is designed on top of rather than below disk array management logic, so SOFA easily manages global resource including global wear leveling and garbage collection across SSDs. Based on its architecture and design, SOFA brings the benefits of linear scalability on the throughput of random or sequential write with constituent SSDs. More importantly, SOFA successfully makes throughput of random write reach that of sequential write.
 
 The Features of Commercial Or Primary Version 
 -------
