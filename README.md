@@ -33,7 +33,7 @@ With regard to volume manager (VM) feature, SOFA supports creating volumes, taki
 
 Concerning high availability (HA) feature, SOFA adopt active-active mode, so the incoming IO can be spread evenly out on two SOFA servers. If one crashes, the other can continue to serve IO requests without any downtime. So, high availability brings more reliability of SOFA.
 
-# Hardware Support
+# Hardware Preparation
 ---
 CPU: Intel CPU with at least 10 virtual CPUs and with 2.8GHz each \
 Memory: 64G \
@@ -43,8 +43,8 @@ HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
 SSDs: They must `support the trim command` including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
-# Sofa Install Guide
-## The Environment Prepare
+# Sofa Installation Guide
+## The Environment Setup
 ---
 - Install OS. centos 7.0 ~ 7.4
 - Install necessary packages for compiling sofa sources 
