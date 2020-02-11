@@ -5,7 +5,7 @@
 Summary
 -------
 
-SOFA (Software Orchestrated Flash Array) is a log-structured flash array management system, which not only converts the random writes to sequential writes, but also fairly dispatches all writes IO requests across all SSDs. Also, the flash translation layer (FTL) in SOFA is designed on top of rather than below disk array management logic, so SOFA easily manages global resource including global wear leveling and garbage collection across SSDs, which means that SOFA is able to avoid the load and wear imbalance problems associated with existing flash disk array systems. More importantly, SOFA brings the benefits of linear scalability on throughput of writes with constituent SSDs. Besides, SOFA successfully makes throughput of random write reach that of sequential write.
+SOFA (Software Orchestrated Flash Array) is a log-structured flash array management system, which not only converts the random writes to sequential writes, but also fairly dispatches all writes IO requests across all SSDs. Also, the flash translation layer (FTL) in SOFA is designed on top of rather than below disk array management logic, so SOFA easily manages global resource including global wear leveling and garbage collection across SSDs, which means that SOFA is able to avoid the load and wear imbalance problems associated with existing flash disk array systems. More importantly, SOFA brings the benefits of linear scalability on throughput of writes with constituent SSDs. So, throughput of random write on SOFA reaches the same throughput of sequential write.
 
 The advantage of SOFA in comparison with standard Raid5 protection.
 * SOFA supports 1M random write IOPS with 20 SSDs, which runs up 10 times faster than standard Raid5 protection.
