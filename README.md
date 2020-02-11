@@ -4,13 +4,8 @@
 
 Summary
 -------
-Virtualization technology could provide a unique benefit to protect any legacy application systems from hardware failures. The reliability of virtual machines running on virtualized servers is not only threatened by hardware failures beneath the whole virtual infrastructure, but also nosy hypervisors that essentially support virtual machines cannot be trusted.
 
-We develop the opensource tool, Cuju, which is a virtualization based fault tolerance technique with epoch-based synchronization. There are several performance optimization technologies are applied by Cuju, including a non-stop/pipelined, continuously migration, dirty tracking for guest virtual memory/virtual device status, and eliminate data transfer between QEMU and KVM.
-
-Cuju shows that these optimizations have greatly saved the processor usage, synchronization bandwidth and have significantly improved VM network throughput and latency at the same time.
-
-For more information see: https://cuju-ft.github.io/cuju-web/home.html
+Sofa is a log-structured flash array management system, which not only converts the random writes to sequential writes, but also fairly dispatches all writes IO requests across all SSDs. Also, the flash translation layer (FTL) in SOFA is designed on top of rather than below disk array management logic, so SOFA easily manages global resource including global wear leveling and garbage collection across SSDs. Based on its architecture and design, SOFA brings the benefits of linear scalability on its throughput of random write and sequential write with constituent SSDs. More importantly, SOFA successfully make throughput of random write reach that of sequential write.
 
 The Features of Commercial Or Primary Version 
 -------
