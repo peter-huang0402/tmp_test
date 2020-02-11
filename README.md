@@ -9,7 +9,7 @@ SOFA (Software Orchestrated Flash Array) is a log-structured flash array managem
 
 The advantage of SOFA in comparison with standard Raid5 protection.
 * SOFA supports 1M random write IOPS with 20 SSDs, which runs up 10 times faster than standard Raid5 protection.
-* SOFA significantly extends 1.8 times longer lifetime than standard Raid5 protection. \
+* SOFA significantly extends 1.8 times longer lifetime of SSD than standard Raid5 protection. \
     9 random writes in standard Raid5 protection need 18 read and 18 write IO requests. Regarding Sofa, 9 random writes only need 9 write IO requests and 1 XOR write request. Compared with standard Raid5, lifetime prolonging in SOFA is 1.8 (18/10)  times longer. 
 
 
@@ -23,7 +23,7 @@ With respect to SOFA over ISCSI, when user accesses SOFA over ISCSI from remote 
 
 About write limit feature, users can set up the write limit for each protection group. When one protection group reaches the write limit, our system sends email notification and transfers write requests to other available groups. 
 
-Regarding crash recovery feature, when SSDs fail and system also crashes, after rebooting your machine and restarting SOFA, SOFA can rebuild data successfully for failed SSDs and can restore system to its normal state.
+Regarding crash recovery feature, when SSDs fail and system also crashes, then after rebooting your machine and restarting SOFA, SOFA can rebuild data successfully for failed SSDs and can restore system to its normal state.
 
 For scale up feature, if there are more spare disks in your machine, SOFA can be scaled up on-the-fly at runtime with more groups and with more space in the block device. 
 
@@ -31,7 +31,7 @@ In respect of RAID6 protection feature, SOFA tolerates two failed disks in the w
 
 With regard to volume manager (VM) feature, SOFA supports creating volumes, taking snapshots and cloning volumes. Also, logical volumes on SOFA can be thinly provisioned, so that the amount of used space in a volume is much smaller than the amount of allocated space in a volume.
 
-Concerning high availability (HA) feature, SOFA adopt active-active mode, so the incoming IO can be spread  evenly out on two SOFA servers. If one crashes, the other can continue to serve IO requests without any downtime. So, high availability brings more reliability of SOFA.
+Concerning high availability (HA) feature, SOFA adopt active-active mode, so the incoming IO can be spread evenly out on two SOFA servers. If one crashes, the other can continue to serve IO requests without any downtime. So, high availability brings more reliability of SOFA.
 
 # Hardware Support
 ---
@@ -68,7 +68,7 @@ $ yum -y install libaio-devel
 
 ## Build SOFA
 ---
-* Clone SOFA on your folder from Github
+* Clone SOFA on your folder from github
 ```
 $ cd /home/$(whoami)
 $ git clone https://github.com/sofa/sofa.git
@@ -116,7 +116,7 @@ drwxr-xr-x 2 root root       84 Feb  5 15:59 lib
 ## Configure sofa_config.xml
 ---
 * SOFA settings in sofa_config.xml \
-At the first time before you start sofa, you must setup the setting file in /usr/sofa/config/sofa_config.xml. Later, if you would like to change your setting files, you should update setting file in /usr/`data`/sofa/config/sofa_config.xml directly.
+At the first time before you start sofa, you must setup the setting file in /usr/sofa/config/sofa_config.xml, the file only uses for the first time. Later, if you would like to change your setting files, you must update setting file in /usr/`data`/sofa/config/sofa_config.xml directly.
 
 ```
 $ vim /usr/sofa/config/sofa_config.xml
@@ -155,18 +155,18 @@ $ vim /usr/sofa/config/sofa_config.xml
                          
     - lfsm_bh_thread   : Assign specific vcores to SOFA's bottom half threads. \
           - value      : How many vcores SOFA uses for IO's bottom half threads. Default value: 3 or 4. \
-          - settings   : Vcores ID. Please don't use the same vcore which lfsm_io_threads lists. 
+          - settings   : Vcores ID. Please don't use the first vcore of physical CPU and the same vcore which lfsm_io_threads lists. 
                          
     - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \
           - value      : Get the prefix of HBA's interrupt name in /proc/interrupt \
           - settings:  : Vcores ID. Please use independent vcore and don't use the same vcore which lfsm_io_thread and lfsm_bh_thread list.                
           
 * Configure SOFA settings \
-    Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
-    Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA. \
-    Step3. Assign vocres to HBA's interrupt handler.     
+    Step1. Setup settings of lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
+    Step2. Assign vcores of lfsm_io_thread and lfsm_bh_thread to SOFA \
+    Step3. Assign vocres to HBA's interrupt handler to SOFA     
 
-    - Step1. Assign lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup                 
+    - Step1. Setup settings of lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup
     
          Check how many SSDs there are in your system
          
@@ -201,7 +201,7 @@ $ vim /usr/sofa/config/sofa_config.xml
             sdu     65:64   0 447.1G  0 disk
         ```          
           
-         In my system there are 20 available SSDs from sdb to sdu except sda used for operation system. So, I assign 20 SSDs to SOFA with 2 protection groups, which means each group is assigned with 10 SSDs.                              
+         In my system there are 20 available SSDs from sdb to sdu except sda used for my operation system. So, I assign 20 SSDs to SOFA with 2 protection groups, which means each group is assigned with 10 SSDs.                              
          
         ```
             <property>
@@ -235,11 +235,11 @@ $ vim /usr/sofa/config/sofa_config.xml
             processor	: 39
         ```
         
-         Know these vcores are located on which physical cores. In my machine, physical CPU 0 has 0 - 9 and 20 - 29 vcores. Physical CPU 1 has 10 - 19 and 30 - 39 vcores. [Notice] Please don't use the first vcores in any physical machine. In my case, 0 is the first vcore on physical CPU 0 and 10 is the first vcore on physical CPU 1. So, vocre 0 and 10 are not assigned to SOFA.
+         Know these vcores are located on which physical cores. In my machine, physical CPU 0 has 0 - 9 and 20 - 29 vcores. Physical CPU 1 has 10 - 19 and 30 - 39 vcores. [Notice] Please don't use the first vcores in any physical CPUs. In my case, 0 is the first vcore on physical CPU 0 and 10 is the first vcore on physical CPU 1. So, vocre 0 and 10 are not assigned to SOFA.
          
          ![](https://i.imgur.com/ayxOPBr.jpg)
 
-         Given SOFA performance, please assign vcores which is located in the same physical CPU. And, in default the ratio of lfsm_io_thread to lfsm_bh_thread for SOFA is 7:3 or 8:4.
+         Given SOFA performance, please assign vcores located in the same physical CPU and don't cross differnt physical CPU. And, in default the ratio of lfsm_io_thread to lfsm_bh_thread for SOFA is 7:3 or 8:4.
          
          ```
             <property>
@@ -254,7 +254,7 @@ $ vim /usr/sofa/config/sofa_config.xml
             </property>
          ```
         
-    - Step3. Assign vocres to HBA's interrupt handler
+    - Step3. Assign vocres to HBA's interrupt handler to SOFA
         
          Check your HBA card and get `bus:device.function` of HBA card. In my computer, there are 3 HBA cards and the frist hba card lists `02:00.0`. 
          
