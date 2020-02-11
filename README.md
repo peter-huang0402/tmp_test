@@ -5,14 +5,14 @@
 Summary
 -------
 
-Sofa is a log-structured flash array management system, which not only converts the random writes to sequential writes, but also fairly dispatches all writes IO requests across all SSDs. Also, the flash translation layer (FTL) in SOFA is designed on top of rather than below disk array management logic, so SOFA easily manages global resource including global wear leveling and garbage collection across SSDs. Based on its architecture and design, SOFA brings the benefits of linear scalability on the throughput of random or sequential write with constituent SSDs. More importantly, SOFA successfully makes throughput of random write reach that of sequential write.
+SOFA is a log-structured flash array management system, which not only converts the random writes to sequential writes, but also fairly dispatches all writes IO requests across all SSDs. Also, the flash translation layer (FTL) in SOFA is designed on top of rather than below disk array management logic, so SOFA easily manages global resource including global wear leveling and garbage collection across SSDs, which means that SOFA is able to avoid teh load and wear imbalance problems associated with existing flash disk array systems. More importantly, SOFA brings the benefits of linear scalability on throughput of writes with constituent SSDs. Besides, SOFA successfully makes throughput of random write reach that of sequential write.
 
 The Features of Commercial Or Primary Version 
 -------
 
 For primary or commercial version, our SOFA has many features including SOFA over ISCSI with 1M random write IOPS, write limit, crash recovery, scale up, RAID6 protection, volume manager and high availability. 
 
-With respect to SOFA over ISCSI, when user accesses SOFA over ISCSI from machine, SOFA still reaches 1M Random write IOPS.
+With respect to SOFA over ISCSI, when user accesses SOFA over ISCSI from remote machines, SOFA still reaches 1M random write IOPS.
 
 About write limit feature, users can set up the write limit for each protection group. When one protection group reaches the write limit, our system sends email notification and transfers write requests to other available groups. 
 
