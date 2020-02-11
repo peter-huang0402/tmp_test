@@ -27,7 +27,7 @@ Regarding crash recovery feature, when SSDs fail and system also crashes, then a
 
 For scale up feature, if there are more spare disks in your machine, SOFA can be scaled up on-the-fly at runtime with more groups and with more space in the block device. 
 
-In respect of RAID6 protection feature, SOFA tolerates two failed disks in the whole system. For example, when 2 SSDs fail in 1 protection group, this protection group still can serve Read IO. Also, SOFA will transfer Write IO to another protection group. Besides, under RAID6 protection, SOFA still reaches 900K random write IOPS without obviously degrading its performance. 
+In respect of RAID6 protection feature, SOFA tolerates two failed disks in the whole system. For example, when 2 SSDs fail in 1 protection group, this protection group still can serve Read IO. Also, SOFA will transfer write IO to another protection group. Besides, under RAID6 protection, SOFA still reaches 900K random write IOPS without obviously degrading its performance. 
 
 With regard to volume manager (VM) feature, SOFA supports creating volumes, taking snapshots and cloning volumes. Also, logical volumes on SOFA can be thinly provisioned, so that the amount of used space in a volume is much smaller than the amount of allocated space in a volume.
 
