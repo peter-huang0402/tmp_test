@@ -43,8 +43,8 @@ HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
 SSDs: They must `support the trim command`. In my machine I use SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
-# Sofa Installation Guide
-## The Environment Setup
+# Installation Guide
+## Environment Setup
 ---
 - Install OS. centos 7.0 ~ 7.4
 - Install necessary packages for compiling sofa sources 
