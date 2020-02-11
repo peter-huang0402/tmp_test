@@ -40,7 +40,7 @@ Memory: 64G \
 Motherboard: Supermicro X10DRU-i+ version 1.02A \
 HBA card: LSI Logic / Symbios Logic SAS3008 PCI-Express Fusion-MPT SAS-3 \
 (PS. For LSI SAS3008, we need 3 HBA cards to support 24 SDDs.) \
-SSDs: They must `support the trim command` including SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
+SSDs: They must `support the trim command`. In my machine I use SanDisk SDSSDH3 and SanDisk Ultra II 00RL.
 
 
 # Sofa Installation Guide
