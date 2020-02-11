@@ -9,7 +9,7 @@ SOFA (Software Orchestrated Flash Array) is a log-structured flash array managem
 
 The advantage of SOFA in comparison with standard Raid5 protection.
 * SOFA supports 1M random write IOPS with 20 SSDs, which runs up 10 times faster than standard Raid5 protection.
-* SOFA significantly extends 1.8 times longer lifetime than standard Raid5 protection.
+* SOFA significantly extends 1.8 times longer lifetime than standard Raid5 protection. \
     9 random writes in standard Raid5 protection need 18 read and 18 write IO requests. Regarding Sofa, 9 random writes only need 9 write IO request and 11 xor write request. Compared with standard Raid5, lifetime-prolonging in SOFA is 1.8 (18/10)  times longer. 
 
 
