@@ -239,7 +239,7 @@ $ vim /usr/sofa/config/sofa_config.xml
          
          ![](https://i.imgur.com/ayxOPBr.jpg)
 
-         Given SOFA performance, please assign vcores located in the same physical CPU and don't cross differnt physical CPU. And, in default the ratio of lfsm_io_thread to lfsm_bh_thread for SOFA is 7:3 or 8:4.
+         Given SOFA performance, please assign vcores located in the same physical CPU and NOT ACROSS differnt physical CPU. And, in default the ratio of lfsm_io_thread to lfsm_bh_thread for SOFA is 7:3 or 8:4.
          
          ```
             <property>
