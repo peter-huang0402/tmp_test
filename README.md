@@ -158,7 +158,7 @@ $ vim /usr/sofa/config/sofa_config.xml
           - settings   : Vcores ID. Please don't use the first vcore of physical CPU and repeated vcores which lfsm_io_thread has been using. 
                          
     - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \
-          - value      : Get the prefix of HBA's interrupt name in /proc/interrupt \
+          - value      : Get the prefix of interrupt handler's name of HBA in /proc/interrupt \
           - settings:  : Vcores ID. Please use independent vcore and don't use repeated vcores which lfsm_io_thread and lfsm_bh_thread have been using.                
           
 * Configure SOFA settings \
