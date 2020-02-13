@@ -155,11 +155,11 @@ $ vim /usr/sofa/config/sofa_config.xml
                          
     - lfsm_bh_thread   : Assign specific vcores to SOFA's bottom half threads. \
           - value      : How many vcores SOFA uses for IO's bottom half threads. Default value: 3 or 4. \
-          - settings   : Vcores ID. Please don't use the first vcore of physical CPU and repeated vcores which lfsm_io_thread has used. 
+          - settings   : Vcores ID. Please don't use the first vcore of physical CPU and repeated vcores which lfsm_io_thread has been using. 
                          
     - hba_intr_name    : Assign specifc vcores to HBA's interrupt handler \
           - value      : Get the prefix of HBA's interrupt name in /proc/interrupt \
-          - settings:  : Vcores ID. Please use independent vcore and don't use repeated vcores which lfsm_io_thread and lfsm_bh_thread have used.                
+          - settings:  : Vcores ID. Please use independent vcore and don't use repeated vcores which lfsm_io_thread and lfsm_bh_thread have been using.                
           
 * Configure SOFA settings \
     Step1. Setup settings of lfsm_cn_ssds, cn_ssds_per_hpeu and lfsm_cn_pgroup \
