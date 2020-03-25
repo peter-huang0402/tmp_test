@@ -58,8 +58,9 @@ Google and download kernel-devel-$(uname -r).rpm \
 [Notice] Install kernel-devel-$(uname -r).rpm. $(uname -r) must exactly match your kernel version. \
 In my machine my kernel development package is kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm. 
 ```
-$ yum -y install perl-interpreter  // 4.18.0-147.el8.x86_64 
-$ yum -y install make              // 4.18.0-147.el8.x86_64 
+$ yum -y install perl-interpreter       // 4.18.0-147.el8.x86_64 
+$ yum -y install make                   // 4.18.0-147.el8.x86_64 
+$ yum install kernel-devel-`uname -r`   // 4.18.0-147.el8.x86_64 
 $ rpm -ivh kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm
 $ yum -y install json-c-devel 
 $ yum –y install json-devel 
