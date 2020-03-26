@@ -62,11 +62,16 @@ $ yum -y install perl-interpreter       // 4.18.0-147.el8.x86_64
 $ yum -y install make                   // 4.18.0-147.el8.x86_64 
 $ yum install kernel-devel-`uname -r`   // 4.18.0-147.el8.x86_64 
 $ rpm -ivh kernel-devel-3.10.0-327.10.1.el7.tb.x86_64.rpm
+
+$ yum -y install epel-release   // 4.18.0-147.el8.x86_64  for getting json-devel
 $ yum -y install json-c-devel 
 $ yum –y install json-devel 
 $ yum -y install rpm-build
 $ yum -y install libaio
 $ yum -y install libaio-devel
+$ yum -y install elfutils-libelf-devel   //  no us.
+
+
 ```
 
 ## Build SOFA
