@@ -57,6 +57,7 @@ $ dnf --enablerepo=PowerTools install json-c-devel
 $ yum -y install rpm-build
 $ yum -y install libaio-devel
 $ yum -y install make
+$ yum -y install elfutils-libelf-devel
 ```
 
 ## Build SOFA
