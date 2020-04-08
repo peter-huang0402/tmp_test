@@ -56,6 +56,7 @@ $ yum install kernel-devel-`uname -r`
 $ dnf --enablerepo=PowerTools install json-c-devel
 $ yum -y install rpm-build
 $ yum -y install libaio-devel
+$ yum -y install make
 ```
 
 ## Build SOFA
